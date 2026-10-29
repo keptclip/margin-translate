@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Margin Translate · 页边译</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <span class="dot"></span>
+      <strong>Margin Translate</strong>
+      <span class="sub">同页翻译</span>
+      <button id="settings" class="ghost" title="打开设置">设置</button>
+    </header>
+
+    <section class="body">
+      <div class="langs">
+        <select id="source" class="sel"></select>
+        <button id="swap" class="mini" title="交换语言">⇄</button>
+        <select id="target" class="sel"></select>
+      </div>
+
+      <textarea id="input" placeholder="输入内容，⌘/Ctrl + Enter 翻译"></textarea>
+
+      <div class="actions">
+        <button id="translate" class="primary">翻译</button>
+        <button id="copy" class="btn">复制</button>
+        <button id="clear" class="btn">清空</button>
+      </div>
+
+      <div id="out" class="out"></div>
+      <div id="meta" class="meta"></div>
+    </section>
+
+    <footer class="foot">
+      <button id="bilingual" class="btn wide">当前页双语对照</button>
+      <div class="hint">
+        <span>划词：Alt+Q</span><span>双语：Alt+B</span><span>面板：Alt+T</span>
+      </div>
+    </footer>
+
+    <script src="../shared/config.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

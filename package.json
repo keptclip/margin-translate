@@ -1,0 +1,16 @@
+{
+  "name": "margin-translate-chrome",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Margin Translate · 页边译 —— 不跳转页面的 Chrome 翻译插件，聚合多个免费翻译平台",
+  "scripts": {
+    "test": "node scripts/smoke-test.js && node scripts/integration-test.js",
+    "smoke": "node scripts/smoke-test.js",
+    "integration": "node scripts/integration-test.js",
+    "icons": "python3 scripts/make_icons.py",
+    "check": "node --check src/shared/config.js && node --check src/background/engines.js && node --check src/background/translator.js && node --check src/background/service-worker.js && node --check src/content/styles.js && node --check src/content/ui.js && node --check src/content/bilingual.js && node --check src/content/index.js && node --check src/popup/popup.js && node --check src/options/options.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

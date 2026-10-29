@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Margin Translate · 页边译 · 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <div class="brand">
+          <div class="logo">T</div>
+          <div>
+            <h1>Margin Translate · 页边译</h1>
+            <p>不跳转页面，在当前标签页内完成翻译；聚合多个翻译平台，默认全部使用免费额度。</p>
+          </div>
+        </div>
+        <div class="hero-stat" id="heroStat">加载中…</div>
+      </header>
+
+      <nav class="tabs" id="tabs">
+        <button class="active" data-tab="general">通用</button>
+        <button data-tab="engines">翻译引擎</button>
+        <button data-tab="advanced">高级与排除</button>
+        <button data-tab="about">快捷键 / 帮助</button>
+        <button data-tab="support">♥ 支持作者</button>
+      </nav>
+
+      <section class="panel" data-panel="general">
+        <div class="card">
+          <h2>翻译语言</h2>
+          <div class="grid">
+            <label>源语言
+              <select id="sourceLang"></select>
+            </label>
+            <label>目标语言
+              <select id="targetLang"></select>
+            </label>
+          </div>
+          <p class="tip">源语言选择「自动检测」时由引擎自动识别，准确率取决于所选平台。</p>
+        </div>
+
+        <div class="card">
+          <h2>交互方式</h2>
+          <label class="switch"><input type="checkbox" id="autoTranslateSelection" /><span>划词后立即翻译（默认开启，松手即出译文）</span></label>
+          <label class="switch"><input type="checkbox" id="showSelectionIcon" /><span>关闭自动翻译后，选中文字时显示浮动图标（点图标才翻译）</span></label>
+          <label class="switch"><input type="checkbox" id="tts" /><span>启用译文朗读（使用浏览器语音合成）</span></label>
+          <div class="grid">
+            <label>面板主题
+              <select id="theme">
+                <option value="auto">跟随系统</option>
+                <option value="light">浅色</option>
+                <option value="dark">深色</option>
+              </select>
+            </label>
+            <label>页面对照译文位置
+              <select id="bilingualPosition">
+                <option value="below">原文下方（推荐）</option>
+                <option value="inline">原文行内追加</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>翻译候选
+            <small>用于一键交替多个引擎的候选对象</small>
+          </h2>
+          <p class="tip" id="candidateHint"></p>
+        </div>
+      </section>
+
+      <section class="panel hidden" data-panel="engines">
+        <div class="card note">
+          <strong>费用策略：</strong>默认启用全部<strong>免费</strong>引擎（Google 免费端点 → MyMemory → LibreTranslate），
+          任一失败自动降级到下一个；需要密钥的引擎默认关闭，填写密钥后才会参与。拖住卡片右侧箭头可调整优先级顺序。
+        </div>
+        <div id="engineList" class="engines"></div>
+        <div class="card">
+          <label class="switch"><input type="checkbox" id="fallback" /><span>引擎失败时自动切换到下一个可用引擎</span></label>
+          <label class="switch"><input type="checkbox" id="cacheEnabled" /><span>启用翻译结果本地缓存（省额度、提速）</span></label>
+        </div>
+      </section>
+
+      <section class="panel hidden" data-panel="advanced">
+        <div class="card">
+          <h2>站点排除</h2>
+          <p class="tip">以下域名不启用任何页内功能（每行一个，例如 <code>mail.google.com</code>）。</p>
+          <textarea id="skipHosts" rows="5" placeholder="example.com&#10;mail.google.com"></textarea>
+        </div>
+        <div class="card">
+          <h2>单次文本上限</h2>
+          <label>最大字符数 <span id="textLenLabel" class="badge">5000</span>
+            <input type="range" id="textLenLimit" min="500" max="20000" step="500" />
+          </label>
+          <p class="tip">超长文本建议先在页面上划选段落，避免单次请求过大被平台限流。</p>
+        </div>
+        <div class="card">
+          <h2>本地数据</h2>
+          <p class="tip" id="statsLine"></p>
+          <div class="row">
+            <button id="clearCache" class="btn">清空翻译缓存</button>
+            <button id="resetStats" class="btn">重置统计</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" data-panel="about">
+        <div class="card">
+          <h2>快捷键</h2>
+          <ul id="shortcuts" class="keys"></ul>
+          <button id="openShortcuts" class="btn">前往 Chrome 快捷键设置</button>
+          <p class="tip">若快捷键被浏览器或其它扩展占用，可在上方面板中修改。</p>
+        </div>
+        <div class="card">
+          <h2>隐私说明</h2>
+          <p class="tip">
+            文本只会发送给你在此页面<strong>自己启用</strong>的翻译平台，插件不收集任何个人信息，也没有自建后端。
+            译文缓存保存在本地浏览器存储中，可随时清空。
+          </p>
+        </div>
+        <div class="card">
+          <h2>排障建议</h2>
+          <p class="tip">
+            ① 全部引擎失败：多为免费端点临时限流，稍等片刻或把 MyMemory 邮箱填上使用更高额度；<br />
+            ② DeepL / 微软报 401：检查密钥前缀与区域（免费层也要填 Region）；<br />
+            ③ 公共 LibreTranslate 实例限速：把服务地址改成自建的 <code>http://localhost:5000</code>；<br />
+            ④ 修改设置后当前页面需要刷新才能套用新引擎顺序。
+          </p>
+        </div>
+      </section>
+
+      <section class="panel hidden" data-panel="support">
+        <div class="card donate">
+          <h2>觉得好用，可以支持一下 <small>完全自愿</small></h2>
+          <p class="tip">
+            本项目免费开源：<strong>没有广告、没有埋点、没有服务器费用</strong>，也没有 Pro 版。
+            如果它帮你省下了阅读外文的时间，可以考虑用下面的方式支持我继续维护和打磨。
+          </p>
+          <div class="donate-grid" id="donateLinks"></div>
+          <p class="tip donate-note hidden" id="donateNote"></p>
+          <div class="qr hidden" id="qrBox">
+            <img id="qrImg" src="../../icons/donate-qr.png" alt="收款二维码" />
+            <p class="tip">扫码支持 · 把你的收款码保存为 <code>icons/donate-qr.png</code>，这里会自动显示</p>
+          </div>
+          <p class="tip hidden" id="donateEmpty"></p>
+        </div>
+
+        <div class="card">
+          <h2>关于</h2>
+          <div class="about-list">
+            <div><span>版本</span><b id="appVersion">—</b></div>
+            <div><span>开源协议</span><b>MIT</b></div>
+            <div><span>隐私政策</span><a id="lnkPrivacy" href="#" target="_blank" rel="noreferrer">查看</a></div>
+            <div><span>源码</span><a id="lnkRepo" href="#" target="_blank" rel="noreferrer">GitHub 仓库</a></div>
+            <div><span>反馈</span><a id="lnkIssues" href="#" target="_blank" rel="noreferrer">提交 Issue</a></div>
+          </div>
+          <p class="tip">
+            本扩展不含任何统计 / 崩溃上报组件，也不上传浏览数据。若你怀疑有数据外传，欢迎到仓库直接开 issue 质证。
+          </p>
+        </div>
+      </section>
+
+      <footer class="foot" id="statusBar">就绪</footer>
+    </div>
+
+    <script src="../shared/config.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

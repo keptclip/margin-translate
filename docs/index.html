@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Margin Translate · 页边译 —— 隐私政策</title>
+    <meta name="description" content="Margin Translate · 页边译：不跳转页面的 Chrome 翻译扩展。隐私政策与产品说明。" />
+    <style>
+      :root {
+        --bg: #f6f7fb;
+        --card: #fff;
+        --fg: #161a22;
+        --muted: #6b7280;
+        --line: rgba(17, 24, 39, .09);
+        --accent: #4f5bd5;
+        --soft: rgba(79, 91, 213, .1);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0e1015;
+          --card: #171a21;
+          --fg: #e8eaf0;
+          --muted: #98a1b0;
+          --line: rgba(255, 255, 255, .1);
+          --accent: #8b9bff;
+          --soft: rgba(139, 155, 255, .14);
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 15px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+        padding: 48px 20px 80px;
+      }
+      main { max-width: 760px; margin: 0 auto; }
+      .hero { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+      .logo {
+        width: 52px; height: 52px; border-radius: 14px; flex: 0 0 auto;
+        background: linear-gradient(135deg, #4f5bd5, #899bff); color: #fff;
+        display: grid; place-items: center; font-size: 22px; font-weight: 700;
+        box-shadow: 0 10px 26px rgba(79, 91, 213, .28);
+      }
+      h1 { font-size: 22px; margin: 0; letter-spacing: .01em; }
+      .sub { color: var(--muted); font-size: 13.5px; margin: 2px 0 0; }
+      .lang { margin: 22px 0 10px; display: flex; gap: 6px; }
+      .lang button {
+        border: 1px solid var(--line); background: var(--card); color: var(--muted);
+        padding: 5px 13px; border-radius: 999px; font: inherit; font-size: 12.5px; cursor: pointer;
+      }
+      .lang button.on { background: var(--soft); color: var(--accent); border-color: transparent; font-weight: 600; }
+      .card {
+        background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+        padding: 20px 22px; margin-bottom: 14px;
+      }
+      h2 { font-size: 15px; margin: 22px 0 8px; }
+      h2:first-child { margin-top: 0; }
+      p, li { font-size: 14px; }
+      p { margin: 8px 0; }
+      ul { margin: 8px 0; padding-left: 20px; }
+      li { margin: 4px 0; }
+      code {
+        background: var(--soft); color: var(--accent); padding: 1px 6px;
+        border-radius: 6px; font-size: 12.5px; font-family: ui-monospace, Menlo, monospace;
+      }
+      table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+      th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { color: var(--muted); font-weight: 600; font-size: 12.5px; }
+      .ok { color: #2f9e69; font-weight: 600; }
+      .warn {
+        background: rgba(194, 65, 12, .08); border: 1px solid rgba(194, 65, 12, .16);
+        color: #b45309; border-radius: 12px; padding: 12px 14px; font-size: 13.5px;
+      }
+      @media (prefers-color-scheme: dark) { .warn { color: #fbbf24; } }
+      .donate { border-color: var(--accent); background: linear-gradient(180deg, var(--soft), transparent 60%); }
+      .donate-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+      .donate-btn {
+        display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+        border: 1px solid var(--line); background: var(--bg); color: var(--fg);
+        border-radius: 10px; padding: 9px 14px; font-size: 13px;
+      }
+      .donate-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .foot { color: var(--muted); font-size: 12.5px; text-align: center; margin-top: 26px; }
+      a { color: var(--accent); }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="hero">
+        <div class="logo">M</div>
+        <div>
+          <h1>Margin Translate · 页边译</h1>
+          <p class="sub">不跳转页面的 Chrome 翻译扩展 · 划词即译 / 页内双语对照 / 多引擎自动降级</p>
+        </div>
+      </div>
+
+      <div class="lang">
+        <button id="btn-zh" class="on">中文</button>
+        <button id="btn-en">English</button>
+      </div>
+
+      <!-- 中文 -->
+      <div id="zh">
+        <div class="card">
+          <h2>一句话说明</h2>
+          <p class="ok">本扩展不收集、不存储、不买卖你的任何数据；没有服务器、没有账号、没有埋点、没有广告。</p>
+          <h2>数据流向</h2>
+          <p>只有在下列动作发生时，扩展才会向你<strong>自己启用</strong>的第三方翻译平台发起请求：</p>
+          <ul>
+            <li>划词翻译（含开启「选中即翻译」后的自动触发）</li>
+            <li>在面板或工具栏弹窗中点击翻译</li>
+            <li>开启页内双语对照（此时逐段发送所选区域内容）</li>
+            <li>在设置页点击某个引擎的「测试连通」（仅发送一小句测试文本）</li>
+          </ul>
+          <p>原文与译文会经过这些平台（MyMemory、Google 免费端点、LibreTranslate、百度翻译、DeepL、微软 Translator，或你自己配置的 OpenAI 兼容网关 / 自建端点），并受其各自隐私政策约束。开发者<strong>不接收、不中转、不落库</strong>。</p>
+
+          <h2>本地保存了什么</h2>
+          <table>
+            <tr><th>数据</th><th>位置</th><th>清除方式</th></tr>
+            <tr><td>设置（语言、引擎、外观、站点黑名单）</td><td><code>chrome.storage.sync</code></td><td>卸载扩展即删除</td></tr>
+            <tr><td>你自己填写的 API 密钥</td><td><code>chrome.storage.sync</code></td><td>设置页清空输入框</td></tr>
+            <tr><td>译文缓存（最多 3000 条，LRU）</td><td><code>chrome.storage.local</code></td><td>设置 → 高级 → 清空翻译缓存</td></tr>
+            <tr><td>用量统计（次数 / 字符 / 失败）</td><td><code>chrome.storage.local</code></td><td>设置 → 高级 → 重置统计</td></tr>
+          </table>
+
+          <h2>权限用途</h2>
+          <table>
+            <tr><th>权限</th><th>原因</th></tr>
+            <tr><td><code>storage</code></td><td>保存设置、缓存与统计（均在本机）</td></tr>
+            <tr><td><code>activeTab</code> · <code>scripting</code></td><td>只有你点击扩展图标时，才读取当前页的选中文字</td></tr>
+            <tr><td><code>contextMenus</code></td><td>右键「翻译选中内容」</td></tr>
+            <tr><td><code>commands</code></td><td>Alt+Q / Alt+B / Alt+T 快捷键</td></tr>
+            <tr><td><code>alarms</code></td><td>定时巡检本地缓存，不联网</td></tr>
+            <tr><td><code>http://*/*</code> · <code>https://*/*</code></td><td>在普通网页内注入划词气泡与双语对照；不读取 <code>chrome://</code> 与商店页面</td></tr>
+            <tr><td>各翻译平台域名</td><td>让后台调用你启用的平台，绕开页面 CSP 限制</td></tr>
+          </table>
+
+          <h2>使用提醒</h2>
+          <div class="warn">
+            请不要用它翻译身份证号、银行卡号、密码、病历、合同正本等敏感内容。若某个站点不希望上传任何文本，请在<strong>设置 → 高级 → 站点排除</strong>中加入该域名，扩展在该站点将完全停止工作。
+          </div>
+          <h2>关于内置的「Google 免费端点」</h2>
+          <p>该引擎调用的是 <code>translate.googleapis.com</code> 的非官方公开接口，未获 Google 授权，仅供个人学习研究。商业或团队场景请改用 Google Cloud Translation 官方 API，或选择 MyMemory / LibreTranslate / 百度翻译 / DeepL Free / 微软 F0 等官方免费额度。</p>
+        </div>
+      </div>
+
+      <!-- English -->
+      <div id="en" class="hidden">
+        <div class="card">
+          <h2>Short version</h2>
+          <p class="ok">Margin Translate collects nothing. No server, no account, no analytics, no ads.</p>
+
+          <h2>Where your text goes</h2>
+          <p>Requests to third-party providers occur only when you: translate a selection (including the auto-translate-on-selection option), press Translate in the panel or popup, start Inline Bilingual mode, or press "Test connection" for an engine. Destinations are the providers you enabled yourself (MyMemory, Google's public endpoint, LibreTranslate, Baidu Translate, DeepL, Microsoft Translator, or any OpenAI-compatible / self-hosted endpoint you configure). The developer never receives, relays or stores your content.</p>
+
+          <h2>Stored locally</h2>
+          <table>
+            <tr><th>Data</th><th>Where</th><th>Removal</th></tr>
+            <tr><td>Settings (languages, engines, theme, site blacklist)</td><td><code>chrome.storage.sync</code></td><td>Uninstalling the extension</td></tr>
+            <tr><td>API keys you enter</td><td><code>chrome.storage.sync</code></td><td>Clear the field in Settings</td></tr>
+            <tr><td>Translation cache (max 3,000 entries, LRU)</td><td><code>chrome.storage.local</code></td><td>Settings → Advanced → Clear cache</td></tr>
+            <tr><td>Usage counters</td><td><code>chrome.storage.local</code></td><td>Settings → Advanced → Reset stats</td></tr>
+          </table>
+
+          <h2>Permissions</h2>
+          <ul>
+            <li><code>storage</code> — local settings, cache, counters.</li>
+            <li><code>activeTab</code> / <code>scripting</code> — read the current selection only after you click the toolbar icon.</li>
+            <li><code>contextMenus</code> — right-click translate.</li>
+            <li><code>commands</code> — Alt+Q / Alt+B / Alt+T shortcuts.</li>
+            <li><code>alarms</code> — periodic local cache check, no network.</li>
+            <li><code>http://*/*</code> / <code>https://*/*</code> — inject the in-page selection UI and bilingual mode. No access to <code>chrome://</code> or the Web Store.</li>
+            <li>Provider hostnames — allow the background worker to call the translation engines you enabled.</li>
+          </ul>
+
+          <h2>Sensitive content</h2>
+          <div class="warn">Do not translate ID numbers, bank cards, passwords or medical records. Use <strong>Settings → Advanced → Site exclusion</strong> to disable the extension on sensitive domains.</div>
+
+          <h2>Note on the built-in "Google public endpoint"</h2>
+          <p>It calls the unofficial, unauthorized <code>translate.googleapis.com</code> endpoint and is intended for personal study only. For commercial use, switch to the official Google Cloud Translation API or one of the official free tiers listed above.</p>
+        </div>
+      </div>
+
+      <div class="card donate">
+        <h2>支持这个项目 <small style="color:var(--muted);font-weight:400">完全自愿</small></h2>
+        <p>Margin Translate <strong>永远免费</strong>，也不会有「付费才能用」的功能。如果它帮你省下了阅读外文的时间，可以:</p>
+        <div class="donate-grid">
+          <a class="donate-btn" href="https://afdian.com/a/keptclip" target="_blank" rel="noreferrer"><b>☕</b><span>在爱发电支持</span></a>
+          <a class="donate-btn" href="https://github.com/keptclip/margin-translate" target="_blank" rel="noreferrer"><b>★</b><span>在 GitHub 点个 Star</span></a>
+        </div>
+        <p style="color:var(--muted);font-size:13px;margin-top:10px">你的支持会变成修 bug、适配新翻译 API、回应每一个 issue 的时间 —— 谢谢你。</p>
+      </div>
+
+      <div class="card">
+        <h2>联系 / Contact</h2>
+        <p>问题反馈、安全报告：<a id="issues" href="#">在 GitHub 仓库提交 Issue</a>。本页面即本扩展的隐私政策页面，更新会随仓库变更。</p>
+        <p>Effective date: 2026-10-29 · Last updated: 2026-10-29</p>
+      </div>
+
+      <p class="foot">Margin Translate · 页边译 — MIT License · Built for reading, not for tracking.</p>
+    </main>
+
+    <script>
+      (function () {
+        const btnZh = document.getElementById('btn-zh');
+        const btnEn = document.getElementById('btn-en');
+        const zh = document.getElementById('zh');
+        const en = document.getElementById('en');
+        function setLang(lang) {
+          const isZh = lang !== 'en';
+          zh.classList.toggle('hidden', !isZh);
+          en.classList.toggle('hidden', isZh);
+          btnZh.classList.toggle('on', isZh);
+          btnEn.classList.toggle('on', !isZh);
+          document.documentElement.lang = isZh ? 'zh-CN' : 'en';
+        }
+        btnZh.addEventListener('click', () => setLang('zh'));
+        btnEn.addEventListener('click', () => setLang('en'));
+        setLang((navigator.language || 'zh').toLowerCase().startsWith('zh') ? 'zh' : 'en');
+
+        // 自动拼出当前仓库的 Issues 地址（user.github.io/repo → github.com/user/repo/issues）
+        const host = location.hostname;
+        if (host.endsWith('.github.io')) {
+          const owner = host.split('.')[0];
+          const repo = location.pathname.split('/').filter(Boolean)[0] || 'margin-translate';
+          const a = document.getElementById('issues');
+          a.href = 'https://github.com/' + owner + '/' + repo + '/issues';
+        }
+      })();
+    </script>
+  </body>
+</html>

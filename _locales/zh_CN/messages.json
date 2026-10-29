@@ -1,0 +1,30 @@
+{
+  "extName": {
+    "message": "Margin Translate · 页边译",
+    "description": "扩展名称"
+  },
+  "extDesc": {
+    "message": "不跳转页面，在当前标签页内直接翻译：划词即译、页内双语对照，聚合多个免费翻译平台并支持自动降级。",
+    "description": "扩展描述"
+  },
+  "actionTitle": {
+    "message": "Margin Translate · 页边译（划词 / 面板 / 双语）",
+    "description": "工具栏按钮提示"
+  },
+  "menuTranslate": {
+    "message": "使用 Margin Translate 翻译「%s」",
+    "description": "右键菜单项，%s 为选中的文字"
+  },
+  "cmdTranslateSelection": {
+    "message": "翻译当前选中的文字",
+    "description": "快捷键说明"
+  },
+  "cmdToggleBilingual": {
+    "message": "开启 / 还原当前页双语对照",
+    "description": "快捷键说明"
+  },
+  "cmdTogglePanel": {
+    "message": "打开 / 关闭翻译面板",
+    "description": "快捷键说明"
+  }
+}

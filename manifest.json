@@ -1,0 +1,85 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "1.1.0",
+  "description": "__MSG_extDesc__",
+  "default_locale": "zh_CN",
+  "minimum_chrome_version": "102",
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_popup": "src/popup/popup.html"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "commands",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://api.mymemory.translated.net/*",
+    "https://mymemory.translated.net/*",
+    "https://fanyi-api.baidu.com/*",
+    "https://libretranslate.com/*",
+    "https://*.libretranslate.com/*",
+    "https://api-free.deepl.com/*",
+    "https://api.cognitive.microsofttranslator.com/*",
+    "https://api.openai.com/*",
+    "<all_urls>"
+  ],
+  "commands": {
+    "translate-selection": {
+      "suggested_key": {
+        "default": "Alt+Q"
+      },
+      "description": "翻译当前选中的文字"
+    },
+    "toggle-bilingual": {
+      "suggested_key": {
+        "default": "Alt+B"
+      },
+      "description": "开启 / 还原当前页双语对照"
+    },
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+T"
+      },
+      "description": "打开 / 关闭翻译面板"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/shared/config.js",
+        "src/content/styles.js",
+        "src/content/ui.js",
+        "src/content/bilingual.js",
+        "src/content/index.js"
+      ],
+      "css": [
+        "src/content/host.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

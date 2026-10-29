@@ -1,0 +1,48 @@
+/* 注入到页面的命名空间样式：只作用于双语对照插入的元素 */
+
+.margin-result-block,
+.margin-inline-result {
+  /* 让插入的译文尽量继承宿主排版，避免样式突兀 */
+  color: inherit;
+  line-height: inherit;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+.margin-result-block {
+  display: block !important;
+  margin: 6px 0 10px !important;
+  padding: 4px 10px !important;
+  border-left: 3px solid rgba(88, 101, 242, 0.55) !important;
+  background: rgba(88, 101, 242, 0.07) !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-size: 0.94em !important;
+  opacity: 0.95 !important;
+}
+
+.margin-inline-result {
+  display: inline !important;
+  background: rgba(88, 101, 242, 0.09) !important;
+  border-bottom: 1px dashed rgba(88, 101, 242, 0.5) !important;
+}
+
+/* 仅译文模式：隐藏原文，只保留翻译结果 */
+.margin-bilingual-only .margin-src-wrapper {
+  display: none !important;
+}
+
+.margin-src-wrapper {
+  display: inline !important;
+}
+
+.margin-result-pending {
+  opacity: 0.55 !important;
+  font-style: italic !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .margin-result-block {
+    background: rgba(122, 138, 255, 0.13) !important;
+    border-left-color: rgba(122, 138, 255, 0.8) !important;
+  }
+}
